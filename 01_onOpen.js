@@ -6,5 +6,6 @@ function onOpen() {
     .addItem('データ確認', 'testData')
     .addItem('フォーム作成','createTestForm')
     .addItem('自動採点設定','setupTrigger')
+    .addItem('分析レポート','generateReport')
     .addToUi();
 }
