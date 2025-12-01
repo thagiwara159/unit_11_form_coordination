@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>テスト管理</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white text-center">
+        <h3> テスト管理システム </h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h5> システム操作</h5> 
+<div class="d-grid gap-2">
+            <button class="btn btn-success" onclick="createForm()">
+              📝フォーム作成
+            </button>
+            <button class="btn btn-info" onclick="setupTrigger()">
+              ⚙️自動採点設定
+            </button>
+            <button class="btn btn-warning" onclick="generateReport()">
+              📊分析レポート
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5> 📈統計情報</h5>
+          <div id="stats">
+            <button class="btn btn-outline-primary" onclick="loadStats()">
+              統計を表示
+            </button>
+          </div>
+        </div>
+</div></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function createForm() {
+    google.script.run
+      .withSuccessHandler(() => alert('フォームを作成しました！ '))
+      .withFailureHandler(err => alert('エラー: ' + err.message))
+      .createTestForm();
+}
+
+function setupTrigger() {
+    google.script.run
+      .withSuccessHandler(() => alert('自動採点を設定しました！ '))
+      .withFailureHandler(err => alert('エラー: ' + err.message))
+      .setupTrigger();
+}
+
+function generateReport() {
+    google.script.run
+      .withSuccessHandler(() => alert('レポートを送信しました！ '))
+      .withFailureHandler(err => alert('エラー: ' + err.message))
+      .generateReport();
+}
+
+function loadStats() {
+    google.script.run
+      .withSuccessHandler(displayStats)
+      .withFailureHandler(err => alert('エラー: ' + err.message))
+      .getStats();
+}
+
+function displayStats(stats) {
+    if (!stats) {
+      document.getElementById('stats').innerHTML = '<p>データがありません </p>';
+      return;
+    }
+    document.getElementById('stats').innerHTML = `
+      <div class="card">
+        <div class="card-body">
+          <p><strong>受験者数:</strong> ${stats.totalStudents}名</p>
+          <p><strong>平均点:</strong> ${stats.averageScore}点</p>
+          <p><strong>合格率:</strong> ${stats.passRate}%</p>
+        </div>
+      </div>`; }</script></body></html>
