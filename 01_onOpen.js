@@ -9,5 +9,9 @@ function onOpen() {
     .addItem('フォーム作成','createTestForm')
     .addItem('自動採点設定','setupTrigger')
     .addItem('分析レポート','generateReport')
+    .addSeparator()
+    .addItem('バックアップ','createBackup')
+    .addItem('システム確認','checkSystem')
+    .addItem('完成確認','verifyCompletion')
     .addToUi();
 }
